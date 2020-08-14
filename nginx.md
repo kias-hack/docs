@@ -2,16 +2,16 @@
 
 запуск службы nginx 
 =====================
- >systemctl start nginx   //старт nginx \n
- >systemctl stop nginx  //остановка nginx \n
- >systemctal restart nginx  //полный рестарт nginx (главный процесс тоже перезапускается) \n
+ >systemctl start nginx   //старт nginx  
+ >systemctl stop nginx  //остановка nginx  
+ >systemctal restart nginx  //полный рестарт nginx (главный процесс тоже перезапускается)  
  
 сигналы которые можно передать nginx 
 =====================
-  * 1 - stop - быстрое завершение 
-  * 2 - quit - плавное завершение
-  * 3 - reload - перезагрузка конфигурации и процессов worker`ов
-  * 4 - reopen - переоткрытие log-файлов
+  1. - stop - быстрое завершение 
+  2. - quit - плавное завершение
+  3. - reload - перезагрузка конфигурации и процессов worker`ов
+  4. - reopen - переоткрытие log-файлов
   
 h3 для передачи сигналов:
 =====================

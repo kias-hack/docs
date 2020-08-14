@@ -2,9 +2,9 @@
 
 запуск службы nginx 
 =====================
- * >systemctl start nginx   //старт nginx
- * >systemctl stop nginx  //остановка nginx
- * >systemctal restart nginx  //полный рестарт nginx (главный процесс тоже перезапускается)
+ >systemctl start nginx   //старт nginx \n
+ >systemctl stop nginx  //остановка nginx \n
+ >systemctal restart nginx  //полный рестарт nginx (главный процесс тоже перезапускается) \n
  
 сигналы которые можно передать nginx 
 =====================

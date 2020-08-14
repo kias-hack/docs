@@ -63,6 +63,8 @@
 user www-data;
 worker_process 2;
 
+gzip on;
+
 events{
   use kqueue;
   worker_connections 1024;

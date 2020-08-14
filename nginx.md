@@ -1,10 +1,10 @@
-nginx-это http сервер, используется как прокси-сервер, почтовый сервер и TCP/UDP сервер общего назначения.
+`nginx` - это http сервер, используется как прокси-сервер, почтовый сервер и TCP/UDP сервер общего назначения.
 
 запуск службы nginx 
 =====================
- >systemctl start nginx   //старт nginx
- >systemctl stop nginx  //остановка nginx
- >systemctal restart nginx  //полный рестарт nginx (главный процесс тоже перезапускается)
+ * >systemctl start nginx   //старт nginx
+ * >systemctl stop nginx  //остановка nginx
+ * >systemctal restart nginx  //полный рестарт nginx (главный процесс тоже перезапускается)
  
 сигналы которые можно передать nginx 
 =====================

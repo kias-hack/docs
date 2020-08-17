@@ -2,7 +2,7 @@
 =======
 Для создания бэкапов используется утилита 'mysqldump'  
 
->mysqldump <params> <database | (database, database, ...)> <table>  
+>mysqldump <params>; <database | (database, database, ...)>; <table>;
   
 Возможные параметры этой утилиты:  
 '-u' '--user' имя пользователя  

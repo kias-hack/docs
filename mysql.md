@@ -43,13 +43,14 @@
 Восстановление поврежденных таблиц
 =======
 Сначала можно проверить таблицу на исправность
->mysql> use db_name;  mysql> check table db_table;  
+>mysql\> use db_name;  
+>mysql\> check table db_table;  
 Отобразится таблица в которой с столбце 'Msg_text' будет статус этой таблицы  
 
 Метод для таблиц MyISAM
 ======
 Для восстановления таблицы используется SQL команда  
->mysql> repair table db_table;  
+>mysql\> repair table db_table;  
 
 Метод для таблиц innoDB
 ======

@@ -71,3 +71,12 @@
 Убрать пароль с ключа можно следующим образом
 
 > openssl rsa -in `key-encrypted.key` -out `key-decrypted.key`
+
+Достать цепочку из pfx файла
+
+> openssl pkcs12 -in `certificate.pfx` -cacerts -nokeys -chain
+
+Достать ключ и сертификат
+
+> openssl pkcs12 -in `certificate.pfx` -nokeys -clcerts -noout
+> openssl pkcs12 -in `certificate.pfx` -nocerts -nodes

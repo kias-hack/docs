@@ -57,7 +57,9 @@
 Сгенерировать самоподисанный сертификат
 
 > openssl req -x509 -nodes -newkey rsa:2048 -days 365 -keyout `./key.pem` -out `cert.pem` -subj /C=/ST=/L=/O=/CN=`site.ru` 
+
 =======
+
 Упаковать сертификаты и ключи в pfx формат можно следующей командой
 
 > openssl pkcs12 -inkey `certificate.key` -in `certificate.crt` -export -out `certificate.pfx`

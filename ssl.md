@@ -79,4 +79,5 @@
 Достать ключ и сертификат
 
 > openssl pkcs12 -in `certificate.pfx` -nokeys -clcerts -noout
+
 > openssl pkcs12 -in `certificate.pfx` -nocerts -nodes

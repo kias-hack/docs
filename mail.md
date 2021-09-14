@@ -13,7 +13,9 @@ Body email message
 
 Ссылка на документацию по exim4 https://www.lissyara.su/doc/exim/4.70/introduction/
 
-Статья про настройку DKIM в exim https://habr.com/ru/post/173605/
+Статья про настройку DKIM в exim 
+1. https://habr.com/ru/post/173605/
+2. https://pc.ru/articles/nastrojka-dkim-v-exim
 
 # Для хорошей репутации почтовых сообщений нужно настроить записи SPF, DKIM, DMARC
 

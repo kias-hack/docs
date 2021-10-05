@@ -6,3 +6,4 @@
 ## https://habr.com/ru/post/560068/ - php DTO
 ## https://redux.js.org/introduction/getting-started - react redux
 ## https://webformyself.com/kak-sozdat-na-javascript-sredstvo-prosmotra-pdf/ - js PDF reader
+## https://tproger.ru/translations/7-tips-for-newbie-to-data-science/?utm_medium=messenger&utm_source=telegram - data science links

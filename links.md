@@ -3,3 +3,6 @@
 ## https://pingvinus.ru/git/1718 - git stash описание
 ## https://pythonru.com/uroki/obuchenie-python-gui-uroki-po-tkinter - gui at python
 ## https://habr.com/ru/company/luxoft/blog/256877/ - коллекции java
+## https://habr.com/ru/post/560068/ - php DTO
+## https://redux.js.org/introduction/getting-started - react redux
+## https://webformyself.com/kak-sozdat-na-javascript-sredstvo-prosmotra-pdf/ - js PDF reader

@@ -68,3 +68,18 @@
 >SHOW FULL PROCESSLIST;
 
 >KILL QUERY id_процесса;
+
+Если таблица занимает больше места чем в ней есть данных
+==
+
+С помощтю команды
+
+>SHOW TABLE STATUS LIKE `table_name`\G;
+
+Смотрим вывод статистики по таблице. Если в поле Data_free очень блоьшое значение (размер в байтах) то можно это исправить ребилдом таблицы
+
+>ALTER TABLE `table_name` Engine=InnoDB;
+
+Также можно запустить оптимизацию на этой таблице
+
+>OPTIMIZE TABLE `table_name`;

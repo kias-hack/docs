@@ -83,3 +83,14 @@
 > openssl pkcs12 -in `certificate.pfx` -nokeys -clcerts -noout
 
 > openssl pkcs12 -in `certificate.pfx` -nocerts -nodes
+
+# Выпуск самоподписанного сертификата letsencrypt
+
+Для выпуска сертификата используется команда
+
+> certbot certonly --webroot -w `web_path` -d `domain`
+
+Где:
+* `web_path` - путь к директории с сайтом (если используется система ispmanager, тогда этот путь должен быть /usr/local/mgr5/www/letsencrypt/, т.к. панель уже проставила автоматический редирект на путь который генерирует скрипт получения сертификата)
+* doamin - домен для которого необходимо получить сертификат
+

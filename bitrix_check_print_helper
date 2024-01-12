@@ -1,0 +1,113 @@
+<?
+class BitrixHelperService {
+    static function addShipmentToOrderAndAddCheck($orderId, $checkType){
+        self::includeModules();
+        
+        $shipment = self::addShipmentToOrder($orderId);
+        
+        $order = \Bitrix\Sale\Order::load($orderId);
+
+        $payment = $order->getPaymentCollection()[0];
+        
+        \Bitrix\Sale\Cashbox\CheckManager::addByType([$payment], $checkType, ["" => [$shipment]]);
+    }
+    
+    static function addShipmentToOrder($orderId){
+        self::includeModules();
+
+        $order = \Bitrix\Sale\Order::load($orderId);
+
+        $shipment = self::addShipmentToOrderInternal($order);
+        self::fillShipment($order, $shipment);
+
+        $shipmentCollection = $shipment->getCollection();
+
+        $shipmentCollection->calculateDelivery();
+
+        $shipmentCollection->save();
+        
+        $order->save();
+        
+        return $shipment;
+    }
+
+    static protected function addShipmentToOrderInternal(\Bitrix\Sale\Order $order){
+        $shipment = $order->getShipmentCollection()->createItem();
+
+        $shipment->setField('CURRENCY', $order->getCurrency());
+        $shipmentService = \Bitrix\Sale\Delivery\Services\Manager::getById(\Bitrix\Sale\Delivery\Services\EmptyDeliveryService::getEmptyDeliveryServiceId());
+        $shipment->setFields([
+            'DELIVERY_ID' => $shipmentService['ID'],
+            'DELIVERY_NAME' => $shipmentService['NAME'],
+
+        ]);
+
+        $shipment->save();
+        
+        return $shipment;
+    }
+
+    static protected function fillShipment(\Bitrix\Sale\Order $order, $shipment){
+        /**
+         * @var $shipment \Bitrix\Sale\Shipment
+         */
+        $shipmentItemCollection = $shipment->getShipmentItemCollection();
+
+        foreach ($order->getBasket() as $item) {
+            /** @var \Bitrix\Sale\BasketItem $item */
+            $shipmentItem = $shipmentItemCollection->createItem($item);
+            $shipmentItem->setFieldNoDemand("QUANTITY", $item->getQuantity());
+            $shipmentItem->save();
+        }
+    }
+    
+    /**
+     * @param $orderId
+     * @param array $shipmentIds
+     *
+     * Метод не проверяет существование отгрузки
+     */
+    static function fillOrderDeliveryItems($orderId, array $shipmentIds){
+        self::includeModules();
+
+        $items = self::loadBasketItems($orderId);
+
+        foreach ($shipmentIds as $shipmentId) {
+            $shipmentId = (int)$shipmentId;
+
+            if(empty($shipmentId)) continue;
+
+            foreach ($items as $arItem) {
+                    \Bitrix\Sale\Internals\ShipmentItemTable::add([
+                        "ORDER_DELIVERY_ID" => $shipmentId,
+                        "BASKET_ID" => $arItem["ID"],
+                        "DATE_INSERT" => new \Bitrix\Main\Type\DateTime(),
+                        "QUANTITY" => $arItem["QUANTITY"],
+                        "RESERVED_QUANTITY" => 0,
+                ]) ;
+            }
+        }
+    }
+
+    protected static function includeModules(){
+        \Bitrix\Main\Loader::includeModule("sale");
+    }
+
+    protected static function loadBasketItems($orderId){
+        return \Bitrix\Sale\Internals\BasketTable::query()
+            ->setSelect(["ID", "QUANTITY"])
+            ->where("ORDER_ID", $orderId)
+            ->exec()
+            ->fetchAll()
+        ;
+    }
+}
+
+global $DB;
+
+$DB->Query("UPDATE b_sale_cashbox SET ENABLED = \"Y\" WHERE ID = 5");
+
+$orderIds = [360221,360220,360219,360218,360217,360216,360215,360214,360213];
+
+foreach($orderIds as $orderId) BitrixHelperService::addShipmentToOrderAndAddCheck($orderId, "sell");
+?>

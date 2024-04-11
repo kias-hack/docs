@@ -10,6 +10,7 @@
 `-h` `--host` хост  
 `--where` условие выбора данных к примеру `--where="true limit 100"` - выбирает не более 100 записей  
 `--no-data` не бэкапирует данные, только структуру  
+`--ignore-table=DATABASE.table1` не выключает таблицу в бэкап, необходимо укзазать вначале название БД
 
 Примеры вызова
 >mysqldump -uroot -p -hlocalhost my_base my_table > table_dump.sql  

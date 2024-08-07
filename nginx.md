@@ -102,3 +102,30 @@ http{
   }
 }
 ```
+
+HTTP Авторизация
+====================
+
+[Ссылка на документацию nginx]:https://docs.nginx.com/nginx/admin-guide/security-controls/configuring-http-basic-authentication/. 
+
+Необходимо установить пакет apache2-utils (Debian, Ubuntu) или httpd-tools (RHEL/CentOS/Oracle Linux)
+
+Создаем пользователя через консольную команду `htpasswd`. В первый раз необходимо указать параметр `-c` чтобы создать файл. Программа требует указания файла в котором будут храниться пароли.  
+
+> htpasswd `<path_to_file>` `<login>`  
+> htpasswd -c /etc/apache2/.htpasswd user1  
+
+Далее программа попросит ввести пароль и подтверждение пароля.
+
+**Чтобы изменить пароль необходимо снова выполнить команду выше, указав нужного пользователя**
+
+# Подключение http авторизации в конфиге nginx
+
+Подключить можно двумя строчками
+
+> auth_basic "Administrator’s Area";  
+> auth_basic_user_file `<file>`; // где file путь к файлу, к примеру /etc/apache2/.htpasswd. В нем должны храниться пароли, управлять ими можно через команду htpasswd  
+
+Для отдельных путей можно отлючать авторизацию
+
+> auth_basic off

@@ -120,3 +120,12 @@ mysqldump --host=${HOST} --user=${USER} --password=${PASSWORD} --single-transact
 echo "Dump content"
 mysqldump --host=${HOST} --user=${USER} --password=${PASSWORD} ${DATABASE} --no-create-info --skip-triggers ${IGNORED_TABLES_STRING} >> ${DB_FILE}
 ```
+
+Скрипт по формированию списка таблиц из поиска по таблицам в админке
+===
+
+Выполнять на странице /bitrix/admin/perfmon_tables.php?lang=ru
+
+```javascript
+Array.from(document.querySelectorAll("table.adm-list-table tbody tr td:nth-child(3)")).map(e => e.innerText).join("\n")
+```

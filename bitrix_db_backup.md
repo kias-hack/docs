@@ -147,3 +147,12 @@ mysqldump --host=${HOST} --user=${USER} --password=${PASSWORD} ${DATABASE} --no-
 ```javascript
 Array.from(document.querySelectorAll("table.adm-list-table tbody tr td:nth-child(3)")).map(e => e.innerText).join("\n")
 ```
+Развернуть БД из консоли
+====
+
+### Сначала разархивируем бэкап
+
+> tar -xzf `file_dump.sql.tar.gz`
+
+### Запустим восстановеление, необходмо указать доступы от БД и указать файл полученный на пред шаге
+> mysql -h localhost -u`user` -p`password` `db` < `file_dump.sql`

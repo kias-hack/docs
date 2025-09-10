@@ -10,7 +10,8 @@ HOST=
 USER=
 DATABASE=
 DB_FILE=dump.sql
-EXCLUDED_TABLES=(
+EXCLUDED_TABLES=(	
+b_form_result_answer
 b_perf_sql
 b_perf_component
 b_perf_hit

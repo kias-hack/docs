@@ -1,10 +1,13 @@
 sudo apt update
 sudo apt upgrade
-sudo apt install wget ncdu htop git openssh-client
+sudo apt install wget ncdu htop git openssh-client make
 
 wget https://go.dev/dl/go1.25.1.linux-amd64.tar.gz -O ~/go1.25.1.linux-amd64.tar.gz
 sudo tar -xzf ~/go1.25.1.linux-amd64.tar.gz -C /usr/local
-echo -e "export GOROOT=/usr/local/go\nexport GOPATH=$HOME/go\nexport PATH=$GOPATH/bin:$GOROOT/bin:$PATH\n" >> ~/.bashrc
+echo 'export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+' >> ~/.bashrc
 
 # Add Docker's official GPG key:
 sudo apt-get update

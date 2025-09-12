@@ -1,6 +1,6 @@
 sudo apt update
 sudo apt upgrade
-sudo apt install wget ncdu htop git openssh-client make
+sudo apt install wget ncdu htop git openssh-client make pythpn3 pip
 
 wget https://go.dev/dl/go1.25.1.linux-amd64.tar.gz -O ~/go1.25.1.linux-amd64.tar.gz
 sudo tar -xzf ~/go1.25.1.linux-amd64.tar.gz -C /usr/local

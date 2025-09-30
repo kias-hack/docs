@@ -117,3 +117,26 @@ clearIblock([
 ]);
 
 ```
+
+Анализ больших инфоблоков
+====
+
+```php
+
+CModule::includeModule('iblock');
+
+global $DB;
+
+$rows = $DB->Query("select IBLOCK_PROPERTY_ID, COUNT(ID) as cnt from b_iblock_element_property group by IBLOCK_PROPERTY_ID order by COUNT(ID) desc limit 10");
+
+while($ar = $rows->Fetch()) {
+	echo $ar["IBLOCK_PROPERTY_ID"] . " " . $ar["cnt"] . "<br>\n";
+}
+echo "--------------------\n";
+$rows = $DB->Query("select IBLOCK_ID, COUNT(ID) as cnt from b_iblock_element group by IBLOCK_ID order by COUNT(ID) desc limit 10");
+
+while($ar = $rows->Fetch()) {
+	echo $ar["IBLOCK_ID"] . " " . $ar["cnt"] . "<br>\n";
+}
+
+```
